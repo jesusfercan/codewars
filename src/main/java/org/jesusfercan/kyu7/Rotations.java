@@ -1,14 +1,14 @@
 package org.jesusfercan.kyu7;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 /*
 Input:
-
 a string strng
 an array of strings arr
-Output of function contain_all_rots(strng, arr) (or containAllRots or contain-all-rots):
 
+Output of function contain_all_rots(strng, arr) (or containAllRots or contain-all-rots):
 a boolean true if all rotations of strng are included in arr
 false otherwise
 
@@ -30,6 +30,21 @@ public class Rotations {
     public static boolean containAllRots(String strng, List<String> arr) {
         // your code
 
-        return false;
+        for(int i=0;i<strng.length(); i++){
+            if (!arr.contains(strng.substring(i) + strng.substring(0,i)))
+                return false;
+        }
+
+        return true;
     }
+
+// +++++++++++++  CODE OF OTHERS DEVELOPERS +++++++++++++
+    public static boolean containAllRots01(String strng, List<String> arr) {
+        return IntStream.range(0, strng.length())
+                .mapToObj(i -> strng.substring(i) + strng.substring(0, i))
+                .allMatch(arr::contains);
+    }
+
+// ------------------------------------------------------
+
 }
