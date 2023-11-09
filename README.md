@@ -1,2 +1,2 @@
-# codewars
-katas made in codewars
+# Codewars
+Katas made in codewars by jesusfercan
